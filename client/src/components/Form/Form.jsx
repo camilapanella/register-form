@@ -13,7 +13,8 @@ export function validate(input) {
   if (!input.email) errors.email = "Email is required!";
   if (input.phone < 0 || input.price > 1000000)
     errors.phone = "Please enter a valid phone number";
-  if (!input.password) errors.password = "Please enter a password!";
+  if (!input.password.length < 8)
+    errors.password = "Password must be at least 8 digits!";
   return errors;
 }
 
@@ -61,9 +62,10 @@ export default function Form() {
           Convertite ahora en un agente Flexy.
         </span>
         <div>
-          <label >
-            <input name="photo" type="file" hidden />
-            <PictureOutlined className={styles.photo} /> <span>Subi tu foto de perfil.</span>
+          <label>
+            <input name="photo" type="file" value={input.image} hidden />
+            <PictureOutlined className={styles.photo} />{" "}
+            <span>Subi tu foto de perfil.</span>
           </label>
         </div>
         <input
@@ -74,8 +76,6 @@ export default function Form() {
           placeholder="Nombre y Apellido"
           onChange={(e) => handleChange(e)}
         />
-        {errors.name && <span>{errors.name}</span>}
-
         <input
           type="text"
           value={input.phone}
@@ -84,8 +84,6 @@ export default function Form() {
           placeholder="+54 01 0200 000"
           onChange={(e) => handleChange(e)}
         />
-        {errors.phone && <span>{errors.phone}</span>}
-
         <input
           type="text"
           value={input.email}
@@ -94,7 +92,6 @@ export default function Form() {
           placeholder="hola@tuemail.com"
           onChange={(e) => handleChange(e)}
         />
-        {errors.email && <span>{errors.email}</span>}
         <div className={styles.password}>
           <input
             type={visible ? "text" : "password"}
@@ -108,18 +105,17 @@ export default function Form() {
             {visible ? <EyeOutlined /> : <EyeInvisibleOutlined />}
           </div>
         </div>
-        {errors.password && <span>{errors.password}</span>}
         <h5 className={styles.errors}>Debe tener al menos 8 caracteres.</h5>
         <h5 className={styles.errorsRes}>Olvidaste tu contraseña?</h5>
-        {!Object.keys(errors).length ? (
-          <button
-            disabled={!input.name}
-            type="submit"
-            className={styles.button}
-          >
-            <h6 className={styles.buttonText}>Registrate</h6>
-          </button>
-        ) : null}
+
+        <button
+          className={styles.button}
+          disabled={!input.name || !input.email || input.password}
+          type="submit"
+        >
+          <h6 className={styles.buttonText}>Registrate</h6>{" "}
+        </button>
+
         <h5 className={styles.text2}>
           ¿Ya tenés una cuenta? <Link>Inicia sesion</Link>
         </h5>

@@ -37,7 +37,6 @@
   background: #f7f7fd;
   padding: 10px 10px;
   border: 1px solid #e0def7;
-
 }
 
 .input {
@@ -214,12 +213,12 @@
   }
 
   .input {
-    width: 250px;
-    height: 48px;
+    width: 245px;
+    height: 40px;
   }
   .password {
-    width: 250px;
-    height: 48px;
+    width: 245px;
+    height: 40px;
   }
   .errors {
     display: none;
@@ -250,6 +249,12 @@
   }
   .button {
     width: 250px;
-    height: 48px;
+    height: 42px;
+  }
+  .welcome {
+    font-size: 25px;
+  }
+  .text1 {
+    font-size: 13px;
   }
 }

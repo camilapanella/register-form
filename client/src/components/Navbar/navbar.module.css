@@ -46,6 +46,10 @@
     padding: 0px;
     gap: 48px;
   }
+  .brandImage {
+    width: 100px;
+    height: 40px;
+  }
 
   .bgImage {
     display: none;
@@ -56,8 +60,8 @@
     display: flex;
     flex-direction: row;
     align-items: flex-end;
-    left: 20px;
-    top: 25px;
+    left: 70px;
+    top: 20px;
   }
 
   .label {
